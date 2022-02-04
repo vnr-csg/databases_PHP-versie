@@ -1,0 +1,17 @@
+{
+    "files.exclude": {
+        "**/.gitignore": true,
+        "**/.gitpod.yml": true,
+        "**/.npmrc": true,
+        "**/.vscode": true,
+        "**/*Dockerfile": true,
+        "**/client.cnf": true,
+        "**/mysql.cnf": true,
+        "**/node_modules": true
+    },
+    "workbench.colorTheme": "One Dark Pro Flat",
+    "workbench.preferredDarkColorTheme": "One Dark Pro Flat",
+    "workbench.preferredLightColorTheme": "One Dark Pro Flat",
+    "redhat.telemetry.enabled": false,
+    "editor.fontSize": 16
+}
