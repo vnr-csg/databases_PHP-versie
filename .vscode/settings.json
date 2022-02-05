@@ -13,5 +13,6 @@
     "workbench.preferredDarkColorTheme": "One Dark Pro Flat",
     "workbench.preferredLightColorTheme": "One Dark Pro Flat",
     "redhat.telemetry.enabled": false,
-    "editor.fontSize": 16
+    "editor.fontSize": 16,
+    "terminal.integrated.fontSize": 16
 }
