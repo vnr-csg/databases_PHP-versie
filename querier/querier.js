@@ -224,8 +224,7 @@ async function main() {
 
     // Start the server
     app.listen(port, hostname, () => {
-        console.log(`Querier gestart op ${hostname}:${port}`)
-        console.log(`Druk op de volgende link om te openen: http://${hostname}:${port} (als hij niet automatisch opent)`)
+        console.log(`Started querier on ${hostname}:${port}`)
     });
 }
 

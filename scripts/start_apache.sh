@@ -1,3 +1,3 @@
 #!/bin/sh
-# TODO: Start apache (if needed)
-apachectl status
+# Start Apache web server
+apachectl start
