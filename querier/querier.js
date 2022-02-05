@@ -24,7 +24,7 @@ async function main() {
     });
 
     // Serve static files from the public folder
-    app.use(express.static('public'))
+    app.use(express.static('./querier/public'))
 
     // Use JSON format
     app.use(express.json());

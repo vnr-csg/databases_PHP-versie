@@ -6,7 +6,7 @@ figlet Databases
 echo "\n${bold}Databases Module met PHP en MySQL"
 echo "${normal}Deze repository is voor je klaargezet door ${bold}Rijk van Putten${normal} 😃\n"
 
-echo "Even geduld graag terwijl de volgende dingen worden opgezet:"
+echo "Even geduld graag terwijl de volgende dingen worden opgestart:"
 echo "(1/3) Apache HTTP server.."               
 ./scripts/start_apache.sh > /dev/null
 
