@@ -15,8 +15,7 @@ echo "(2/3) MySQL server.."
 
 
 echo "(3/3) SQL Querier.."
-cd ./querier
-./init_querier.sh > /dev/null
+./scripts/init_querier.sh > /dev/null
 node querier > /dev/null &
 echo "Klaar! (hopelijk duurde het niet te lang)"
 

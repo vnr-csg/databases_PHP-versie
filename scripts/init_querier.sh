@@ -1,5 +1,5 @@
 #!/bin/sh
 echo "Importing/resetting MySQL databases.."
-./reset_dbs.sh
+./scripts/reset_dbs.sh
 echo "Downloading Node.js packages.."
-npm ci
+cd querier && npm ci
