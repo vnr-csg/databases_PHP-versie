@@ -20,4 +20,4 @@ cd ./querier
 node querier > /dev/null &
 echo "Klaar! (hopelijk duurde het niet te lang)"
 
-echo "\nJe Gitpod workspace is klaar voor gebruik!\nDruk op ${bold}http://localhost:8001${normal} om je websites te bekijken."
+echo "\nJe Gitpod workspace is klaar voor gebruik!\nDruk op ${bold}http://localhost:8001${normal} om je websites te bekijken en op ${bold}http://localhost:8001${normal} om de SQL querier te gebruiken."
