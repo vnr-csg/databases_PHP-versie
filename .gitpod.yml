@@ -9,6 +9,10 @@ vscode:
     - zhuangtongfa.material-theme
     - bmewburn.vscode-intelephense-client
 ports:
+    # Apache
+  - port: 8001
+    onOpen: open-browser
+    # SQL Querier (Node.js)
   - port: 1700
     onOpen: open-browser
   - port: 33060
