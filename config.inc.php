@@ -19,3 +19,6 @@ $cfg['Servers'][$i]['AllowNoPassword'] = true;
 
 $cfg['UploadDir'] = '';
 $cfg['SaveDir'] = '';
+
+// Disable grouping
+$cfg['NavigationTreeEnableGrouping'] = false;
