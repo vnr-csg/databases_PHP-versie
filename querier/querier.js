@@ -140,7 +140,7 @@ async function main() {
 
     // Reset: executes the database reset script
     app.post('/reset', async (req, res) => {
-        cp.exec('./../scripts/reset_dbs.sh', (error, stdout, stderr) => {
+        cp.exec('./../scripts/restore_default_dbs.sh', (error, stdout, stderr) => {
             if (error) {
                 console.error(`Error during reset: ${error}`);
                 res.status(500).send();

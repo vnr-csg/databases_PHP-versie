@@ -19,7 +19,9 @@
             <div class="col">
                 <h2>PHP Informatie</h2>
                 <?php
+                
                 echo "<p>PHP Versie: " . phpversion() . "</p>";
+
                 ?>
                 <h3>phpMyAdmin</h3>
                 <p>Login met <strong>root</strong> als gebruikersnaam zonder wachtwoord.</p>
@@ -27,8 +29,8 @@
             </div>
             <div class="col">
                 <h2>MySQL Informatie</h2>
-
                 <?php
+
                 $mysqli = new mysqli("localhost", "root");
                 echo "<p>MySQL Versie: " . $mysqli->server_version . "</p>";
                 if ($result = $mysqli->query("SHOW databases")) {
