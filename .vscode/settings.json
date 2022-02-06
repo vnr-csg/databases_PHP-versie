@@ -6,6 +6,8 @@
         "**/.vscode": true,
         "**/*Dockerfile": true,
         "**/client.cnf": true,
+        "**/config.inc.php": true,
+        "**/databases_default": true,
         "**/mysql.cnf": true,
         "**/node_modules": true
     },
