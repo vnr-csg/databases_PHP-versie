@@ -21,6 +21,9 @@
                 <?php
                 echo "<p>PHP Versie: " . phpversion() . "</p>";
                 ?>
+                <h3>phpMyAdmin</h3>
+                <p>Login met <strong>root</strong> als gebruikersnaam zonder wachtwoord.</p>
+                <a class="btn btn-outline-primary" href="/phpmyadmin" title="phpMyAdmin" target="_blank">Open phpMyAdmin</a>
             </div>
             <div class="col">
                 <h2>MySQL Informatie</h2>
