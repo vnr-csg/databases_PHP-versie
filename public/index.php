@@ -8,23 +8,23 @@ function runScript($fileName)
     shell_exec($cmd);
 }
 
-$importStarted = false;
-$exportStarted = false;
-$restoreStarted = false;
+$importDone = false;
+$exportDone = false;
+$restoreDone = false;
 
 if ($_POST['import'] == 1) {
     runScript("import_dbs.sh");
-    $importStarted = true;
+    $importDone = true;
 }
 
 if ($_POST['export'] == 1) {
     runScript("export_dbs.sh");
-    $exportStarted = true;
+    $exportDone = true;
 }
 
 if ($_POST['restore_default'] == 1) {
     runScript("restore_default_dbs.sh");
-    $restoreStarted = true;
+    $restoreDone = true;
 }
 
 ?>
@@ -69,37 +69,52 @@ if ($_POST['restore_default'] == 1) {
                 <?php
                 function info($msg)
                 {
-                    echo '<div class="alert alert-info" role="alert">' . $msg . '</div>';
+                    echo '<div id="result-msg" class="alert alert-success" role="alert">' . $msg . '</div>';
                 }
 
-                if ($importStarted) {
-                    info("Databases geimporteerd");
+                if ($importDone) {
+                    info("Databases geïmporteerd.");
                 }
-                if ($exportStarted) {
-                    info("Databases geexporteerd");
+                if ($exportDone) {
+                    info("Databases gëexporteerd.");
                 }
-                if ($restoreStarted) {
-                    info("Standaard databases hersteld");
+                if ($restoreDone) {
+                    info("Standaard databases hersteld.");
                 }
                 ?>
-                <form action="index.php" method="post">
-                    <div class="vstack gap-2 col-md-5">
+                <div id="loading" class="alert alert-info" style="display: none;" role="alert">
+                    <div class="d-flex align-items-center">
+                        <p id="loading-msg">Aan het laden..</p>
+                        <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+                    </div>
+                </div>
+                <form id="db-man-form" action="index.php" method="post">
+                    <div class="vstack gap-2 me-5">
                         <button class="btn btn-primary" name="export" value="1">Exporteer databases</button>
                         <button class="btn btn-outline-primary" name="import" value="1">Importeer databases</button>
                         <button class="btn btn-outline-danger" name="restore_default" value="1">Herstel standaard</button>
                     </div>
                 </form>
-
+                <script>
+                    document.getElementById("db-man-form").addEventListener('submit', () => {
+                        document.getElementById("loading").style.display = "";
+                        if (document.getElementById("result-msg") != null) {
+                            document.getElementById("result-msg").style.display = "none";
+                        }
+                    });
+                </script>
             </div>
 
         </div>
     </main>
-    <footer>
-        <?php
-        echo "<p>PHP versie: " . phpversion() . "</p>";
-        echo "<p>MySQL versie: " . $mysqli->server_version . "</p>";
-        ?>
-    </footer>
+    <div class="container mt-5">
+        <footer class="d-flex flex-wrap align-items-center py-3 my-4 border-top">
+            <?php
+            echo '<span class="text-muted mx-5">PHP versie: ' . phpversion() . '</span>';
+            echo '<span class="text-muted">MySQL versie: ' . $mysqli->server_version . '</span>';
+            ?>
+        </footer>
+    </div>
 </body>
 
 </html>
