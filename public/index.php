@@ -56,15 +56,22 @@ if ($_POST['restore_default'] == 1) {
                 <?php
                 $mysqli = new mysqli("localhost", "root");
                 if ($result = $mysqli->query("SHOW databases")) {
-                    echo "<b>" . $result->num_rows . " databases: </b>";
-                    echo "<ul>";
+                    $databases = array();
                     while ($row = $result->fetch_row()) {
-                        printf("<li>%s</li>", $row[0], $row[1]);
+                        $dbName = $row[0];
+                        // Filter out default databases
+                        if ($dbName != "information_schema" && $dbName != "performance_schema" && $dbName != "sys" && $dbName != "mysql") {
+                            $databases[] = $dbName;
+                        }
                     }
-                    echo "</ul>";
                     $result->free_result();
                 }
-
+                echo "<b>" .count($databases) . " databases: </b>";
+                echo "<ul>";
+                foreach ($databases as $dbName) {
+                    echo "<li>".$dbName."</li>";
+                }
+                echo "</ul>";
                 ?>
                 <?php
                 function info($msg)
