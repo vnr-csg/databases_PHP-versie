@@ -18,5 +18,8 @@
     "editor.fontSize": 16,
     "terminal.integrated.fontSize": 16,
     "git.autofetch": true,
-    "git.inputValidation": "off"
+    "git.inputValidation": "off",
+    "git.autoRepositoryDetection": "openEditors",
+    "git.detectSubmodulesLimit": 0,
+    "git.ignoreSubmodules": true
 }
