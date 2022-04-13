@@ -53,7 +53,7 @@ if ($_POST['restore_default'] == 1) {
                 <br>
                 <h3>MySQL Querier</h3>
                 <p>Voer queries uit op de MySQL-database.</p>
-            <a class="btn btn-outline-primary" href="/mysql_querier" title="MySQL Querier" target="_blank">Open MySQL Querier</a>
+            <a class="btn btn-outline-primary" href="/mysql-querier" title="MySQL Querier" target="_blank">Open MySQL Querier</a>
             </div>
             <div class="col">
                 <h2>Database Beheer</h2>
