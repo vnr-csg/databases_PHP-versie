@@ -26,4 +26,4 @@ echo "(5/5) Databases importeren.."
 
 echo "Klaar! (hopelijk duurde het niet te lang)"
 
-echo "\nJe Gitpod workspace is klaar voor gebruik!\nDruk op ${bold}http://localhost:8001${normal} om je websites te bekijken en op ${bold}http://localhost:1700${normal} om de SQL querier te gebruiken."
+echo "\nJe Gitpod workspace is klaar voor gebruik!\nDruk op ${bold}http://localhost:8001${normal} om naar het lesmateriaal te gaan en je websites te bekijken."
