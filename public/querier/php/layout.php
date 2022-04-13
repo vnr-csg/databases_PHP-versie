@@ -23,12 +23,16 @@ if (isset($_GET["db"])) {
         }
         $columnNames = array();
         foreach ($columnResult as $columnRow) {
-            $columnNames[] = $columnRow["COLUMN_NAME"];
+            $columnInfo = array();
+            $columnInfo[0] = $columnRow["COLUMN_NAME"];
+            $columnInfo[1] = $columnRow["DATA_TYPE"];
+            $columnNames[] = $columnInfo;
         }
         $layoutRow['name'] = $tableName;
         $layoutRow['columns'] = $columnNames;
         $layouts[] = $layoutRow;
     }
+    header("Content-Type", "application/json");
     echo json_encode($layouts);
 } else {
     die("No database specified.");
