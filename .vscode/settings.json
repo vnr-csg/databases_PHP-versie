@@ -11,9 +11,9 @@
         "**/mysql.cnf": true,
         "**/node_modules": true
     },
-    "workbench.colorTheme": "One Dark Pro Flat",
-    "workbench.preferredDarkColorTheme": "One Dark Pro Flat",
-    "workbench.preferredLightColorTheme": "One Dark Pro Flat",
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "workbench.preferredDarkColorTheme": "One Dark Pro Darker",
+    "workbench.preferredLightColorTheme": "One Dark Pro Darker",
     "redhat.telemetry.enabled": false,
     "editor.fontSize": 16,
     "terminal.integrated.fontSize": 16,
