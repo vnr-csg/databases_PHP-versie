@@ -17,4 +17,11 @@ COPY mysql.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
 COPY client.cnf /etc/mysql/mysql.conf.d/client.cnf
 
 # Install phpMyAdmin
-RUN sh ./scripts/install_phpmyadmin.sh
+RUN mkdir public -p \
+ && cd public \
+ && git clone https://github.com/phpmyadmin/phpmyadmin.git --depth 1 --branch STABLE \
+ && cd phpmyadmin \
+ && composer update --no-dev \
+ && yarn install \
+ && cp ../../config.inc.php .
+ 
