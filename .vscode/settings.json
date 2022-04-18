@@ -20,6 +20,7 @@
     "git.autofetch": true,
     "git.inputValidation": "off",
     "git.autoRepositoryDetection": "openEditors",
-    "git.detectSubmodulesLimit": 0,
-    "git.ignoreSubmodules": true
+    "git.ignoreSubmodules": true,
+    "git.detectSubmodules": false,
+    "git.detectSubmodulesLimit": 100
 }
