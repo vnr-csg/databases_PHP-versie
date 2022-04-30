@@ -16,13 +16,15 @@ COPY mysql.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
 # Install default-login for MySQL clients
 COPY client.cnf /etc/mysql/mysql.conf.d/client.cnf
 
-# Install and configure phpMyAdmin
-RUN install-packages phpmyadmin \
- && echo "Alias /phpmyadmin /usr/share/phpmyadmin\n\
-<Directory /usr/share/phpmyadmin>\n\
-    Options SymLinksIfOwnerMatch\n\
-    DirectoryIndex index.php\n\
-    Require all granted\n\
+# Install configure phpMyAdmin
+RUN install-packages phpmyadmin
+
+# Configure phpMyAdmin
+RUN echo "Alias /phpmyadmin /usr/share/phpmyadmin \n\
+<Directory /usr/share/phpmyadmin> \n\
+    Options SymLinksIfOwnerMatch \n\
+    DirectoryIndex index.php \n\
+    Require all granted \n\
 </Directory>" > /etc/apache2/conf-available/phpmyadmin.conf \
  && a2enconf phpmyadmin
 
