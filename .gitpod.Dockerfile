@@ -18,11 +18,11 @@ COPY client.cnf /etc/mysql/mysql.conf.d/client.cnf
 
 # Install and configure phpMyAdmin
 RUN install-packages phpmyadmin \
- && echo "Alias /phpmyadmin /usr/share/phpmyadmin
-<Directory /usr/share/phpmyadmin>
-    Options SymLinksIfOwnerMatch
-    DirectoryIndex index.php
-    Require all granted
+ && echo "Alias /phpmyadmin /usr/share/phpmyadmin\n\
+<Directory /usr/share/phpmyadmin>\n\
+    Options SymLinksIfOwnerMatch\n\
+    DirectoryIndex index.php\n\
+    Require all granted\n\
 </Directory>" > /etc/apache2/conf-available/phpmyadmin.conf \
  && a2enconf phpmyadmin
 
