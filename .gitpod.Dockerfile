@@ -16,13 +16,16 @@ COPY mysql.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
 # Install default-login for MySQL clients
 COPY client.cnf /etc/mysql/mysql.conf.d/client.cnf
 
-# Install phpMyAdmin
-RUN mkdir public -p \
- && cd public \
- && git clone https://github.com/phpmyadmin/phpmyadmin.git --depth 1 --branch STABLE \
- && cd phpmyadmin \
- && yarn install
+# Install and configure phpMyAdmin
+RUN install-packages phpmyadmin \
+ && echo "Alias /phpmyadmin /usr/share/phpmyadmin
+<Directory /usr/share/phpmyadmin>
+    Options SymLinksIfOwnerMatch
+    DirectoryIndex index.php
+    Require all granted
+</Directory>" > /etc/apache2/conf-available/phpmyadmin.conf \
+ && a2enconf phpmyadmin
 
-# Install phpMyAdmin config
-COPY config.inc.php ./public/phpmyadmin/config.inc.php
+# Copy phpMyAdmin config
+COPY config.inc.php /usr/share/phpmyadmin/config.inc.php
  
