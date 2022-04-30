@@ -16,7 +16,7 @@ COPY mysql.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
 # Install default-login for MySQL clients
 COPY client.cnf /etc/mysql/mysql.conf.d/client.cnf
 
-# Install configure phpMyAdmin
+# Install phpMyAdmin
 RUN install-packages phpmyadmin
 
 # Configure phpMyAdmin
