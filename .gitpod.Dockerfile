@@ -2,6 +2,9 @@ FROM gitpod/workspace-mysql:latest
 
 USER root
 
+# Start MySQL
+RUN /etc/mysql/mysql-bashrc-launch.sh
+
 # Install phpMyAdmin
 RUN install-packages phpmyadmin
 
