@@ -1,6 +1,7 @@
 {
     "files.exclude": {
         "**/.gitignore": true,
+        "**/.gitmodules": true,
         "**/.gitpod.yml": true,
         "**/.npmrc": true,
         "**/.vscode": true,
