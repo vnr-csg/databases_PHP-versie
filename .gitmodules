@@ -1,3 +1,6 @@
 [submodule "public/mysql-querier"]
 	path = public/mysql-querier
 	url = https://github.com/rijkvp/mysql-querier.git
+[submodule "public/js_api_demos"]
+	path = public/js_api_demos
+	url = https://github.com/rijkvp/js_api_demos.git
