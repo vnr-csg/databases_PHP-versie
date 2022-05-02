@@ -25,4 +25,4 @@ $cfg['SaveDir'] = '';
 
 // Disable grouping
 $cfg['NavigationTreeEnableGrouping'] = false;
-
+$cfg['ThemeDefault'] = 'bootstrap';

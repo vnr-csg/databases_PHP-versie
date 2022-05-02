@@ -41,21 +41,45 @@ if ($_POST['restore_default'] == 1) {
 
 <body class="container" style="background-color: rgba(0, 0, 0, 0.1);">
     <main class="mx-5 p-5">
-        <div class="mx-3 my-1 shadow p-5 bg-body rounded">
+        <div class="container mx-3 my-2 shadow p-5 bg-body rounded">
             <h1 class="fw-bold text-center mb-4">
                 Databases Omgeving
             </h1>
             <div class="row">
                 <div class="col m-1 px-5 py-1">
-                    <h2>
-                        <i class="bi bi-book"></i>
-                        Lesmateriaal
-                    </h2>
-                    <ul>
-                        <li>
-                            <a href="/js_api_demos" title="JavaScript APIs" target="_blank"><strong>JavaScript APIs</strong></a>: demos die het gebruik van verschillende JavaScript APIs laten zien.
-                        </li>
-                    </ul>
+                    <div class="mb-5">
+                        <h2>
+                            <i class="bi bi-book"></i>
+                            Lesmateriaal
+                        </h2>
+                        <ul>
+                            <li>
+                                <a href="/js_api_demos" title="JavaScript APIs" target="_blank"><strong>JavaScript APIs</strong></a>: demos die het gebruik van verschillende JavaScript APIs laten zien.
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>
+                            <i class="bi bi-list-ul"></i>
+                            Websites
+                        </h2>
+                        <?php
+                        $files = scandir("./");
+                        $ignored_files = [".", "..", "js_api_demos", "mysql-querier"];
+                        $found = false;
+                        echo "<ul>";
+                        foreach ($files as $file) {
+                            if (is_dir($file) && !in_array($file, $ignored_files)) {
+                                echo '<li><a title="' . $file . '" href="/' . $file . '" target="_blank"><strong>' . $file . '</strong></a></li>';
+                                $found = true;
+                            }
+                        }
+                        echo "</ul>";
+                        if (!$found) {
+                            echo '<p>Geen websites gevonden, maak een map met een website in de public map om hier weer te geven.</p>';
+                        }
+                        ?>
+                    </div>
                 </div>
                 <div class="col m-2 px-5 py-1">
                     <div class="mb-5">
@@ -78,7 +102,9 @@ if ($_POST['restore_default'] == 1) {
                         }
                         echo "<b>Er zijn " . count($databases) . " databases beschikbaar: </b>";
                         echo "<ul>";
-                        foreach ($databases as $dbName) { echo "<li>" . $dbName . "</li>"; }
+                        foreach ($databases as $dbName) {
+                            echo "<li>" . $dbName . "</li>";
+                        }
                         echo "</ul>";
                         ?>
                         <?php
@@ -105,14 +131,14 @@ if ($_POST['restore_default'] == 1) {
                         </div>
                         <form id="db-man-form" action="index.php" method="post">
                             <div class="btn-group mb-2" role="group">
-                                <button class="btn btn-outline-primary" name="export" value="1" data-bs-toggle="tooltip" title="Exporteer de databases om met Git op te slaan.">
+                                <button class="btn btn-outline-primary" name="export" value="1" data-bs-toggle="tooltip" data-bs-html="true" title="<b>Exporteer</b> de databases om met Git op te slaan.">
                                     <i class="bi bi-arrow-bar-up"></i>
                                     Exporteren</button>
-                                <button class="btn btn-outline-primary" name="import" value="1" data-bs-toggle="tooltip" title="Importeer de databases die je met Git hebt opgeslagen.">
+                                <button class="btn btn-outline-primary" name="import" value="1" data-bs-toggle="tooltip" data-bs-html="true" title="<b>Importeer</b> de databases die je met Git hebt opgeslagen.">
                                     <i class="bi bi-arrow-bar-down"></i>
                                     Importeren</button>
                             </div>
-                            <button class="btn btn-outline-danger" name="restore_default" value="1" data-bs-toggle="tooltip" title="Hersteld de databases die bij het lesmateriaal horen naar de oorspronkelijke versies.">
+                            <button class="btn btn-sm btn-outline-danger" name="restore_default" value="1" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="<b>Herstel</b> de databases die bij het lesmateriaal horen naar de oorspronkelijke versies.">
                                 <i class="bi bi-skip-backward"></i>
                                 Herstel standaard databases</button>
                         </form>
@@ -142,16 +168,36 @@ if ($_POST['restore_default'] == 1) {
                 </div>
             </div>
         </div>
+        <div class="container mt-5">
+            <footer class="d-flex flex-wrap align-items-center justify-content-between py-3 my-4 mx-5">
+                <span class="text-muted">Made by Rijk van Putten</span>
+                <div>
+                    <?php
+                    echo '<span class="text-muted mx-3">PHP: <strong>' . phpversion() . '</strong></span>';
+                    $mysql_v = (float)$mysqli->server_version;
+                    $main_version = floor($mysql_v / 10000);
+                    $minor_version = floor(($mysql_v - $main_version * 10000) / 100);
+                    $sub_version = $mysql_v - $main_version * 10000 - $minor_version * 100;
+                    echo '<span class="text-muted mx-3">MySQL: <strong>' . $main_version . "." . $minor_version . "." . $sub_version . '</strong></span>';
+
+                    $git_hash = shell_exec("git rev-parse HEAD");
+                    if (isset($git_hash)) {
+                        echo '<span class="text-muted mx-3">Commit: <strong>' . substr($git_hash, 0, 7) . '</strong></span>';
+                    }
+                    ?>
+                </div>
+            </footer>
+        </div>
     </main>
-    <div class="container mt-5">
-        <footer class="d-flex flex-wrap align-items-center py-3 my-4 border-top">
-            <?php
-            echo '<span class="text-muted mx-5">PHP versie: ' . phpversion() . '</span>';
-            echo '<span class="text-muted">MySQL versie: ' . $mysqli->server_version . '</span>';
-            ?>
-        </footer>
-    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script>
+        // Add bootstrap tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
 </body>
 
 </html>
