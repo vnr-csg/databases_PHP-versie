@@ -1,5 +1,6 @@
 {
     "files.exclude": {
+        ".imported.lock": true,
         "**/.gitignore": true,
         "**/.gitmodules": true,
         "**/.gitpod.yml": true,
