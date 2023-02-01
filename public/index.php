@@ -50,9 +50,9 @@ if ($_POST['restore_default'] == 1) {
                     <div class="mb-5">
                         <h2>
                             <i class="bi bi-book"></i>
-                            Lesmateriaal
+                            aanvullend lesmateriaal
                         </h2>
-                        <ul>
+                        <ul>                     
                             <li>
                                 <a href="/js_api_demos" title="JavaScript APIs" target="_blank"><strong>JavaScript APIs</strong></a>: demos die het gebruik van verschillende JavaScript APIs laten zien.
                             </li>
@@ -61,7 +61,7 @@ if ($_POST['restore_default'] == 1) {
                     <div>
                         <h2>
                             <i class="bi bi-list-ul"></i>
-                            Websites
+                            bestanden bij de module
                         </h2>
                         <?php
                         $files = scandir("./");
