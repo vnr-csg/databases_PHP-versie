@@ -15,7 +15,8 @@
     --DutchBlue: #4a638d;
     --version03:rgba(74, 94, 133, 0.6);
     --version04:rgb(43, 223, 163);
-    --version:rgb(189, 18, 41);
+    --version05:rgb(189, 18, 41);
+    --version:rgba(15, 116, 134, 0.884);
 }
 
 html,body {
@@ -34,6 +35,7 @@ h1 {
     font-size: 5rem;
     font-family: 'Indie Flower', sans;
     color: var(--version);
+    background-color: var(--version04);
 }
 
 h3 {
